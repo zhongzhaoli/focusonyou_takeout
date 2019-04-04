@@ -23,8 +23,19 @@
         <span>深技师周边外卖</span>
     </div>
     <div id="app">
-        <div class="w-100">
-            
+        <div class="text-center" v-if="loading">
+            <img style="width: 150px;" src="./images/loading_2.gif" alt="">
+        </div>
+        <div v-if="!loading" class="w-100 p-2 border-bottom-eaeaea d-flex" v-for="i in sj">
+            <div class="menu_img" :style="{ 'background-image': 'url('+ i.cover +')' }"></div>
+            <div class="ml-2 d-flex flex-column justify-content-between right_div">
+                <p class="title mb-0">{{ i.name }}</p>
+                <span class="start_time">外卖开始时间：{{ i.start_time }}</span>
+                <div class="menu_phone d-flex justify-content-between">
+                    <a :href="'detail.html?id=' + i.id">查看详细菜单</a>
+                    <a :href="'tel:' + i.phone">拨打电话</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -32,11 +43,13 @@
     var app = new Vue({
         el: '#app',
         data: {
-            sj: {}
+            sj: {},
+            loading: true
         },
-        created(){
+        created() {
             api.get_data().then(mes => {
-                this.mes = mes;
+                this.sj = mes;
+                this.loading = false
             })
         },
     });
