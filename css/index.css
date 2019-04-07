@@ -73,3 +73,7 @@ body,html{
     padding: 5px 0;
     font-size: 13px;
 }
+.no_sj{
+    font-size: 13px;
+    color: #777;
+}
