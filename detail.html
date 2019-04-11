@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="./css/zdialog.css">
     <link rel="stylesheet" href="./css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/viewer.css">
     <script src="./js/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/viewer.js"></script>
+    <script src="./js/jquery-viewer.js"></script>
     <script src="./js/ajax.js"></script>
     <script src="./js/api.js"></script>
     <script src="./js/vue.js"></script>
@@ -45,7 +48,7 @@
             </div>
             <hr>
             <div>
-                <img :src="sj.menu" width="100%" alt="">
+                <img :src="sj.menu" @click="img_viewer($event.currentTarget)" width="100%" alt="">
             </div>
         </div>
     </div>
@@ -62,6 +65,11 @@
                 this.sj = mes[0];
                 this.loading = false;
             })
+        },
+        methods: {
+            img_viewer(a){
+                $(a).parent().viewer({"title": false, "navbar": false, "movable": false, "transition": false});
+            }
         }
     });
 
