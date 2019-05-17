@@ -33,7 +33,7 @@
         <div class="text-center" v-if="loading">
             <img style="width: 150px;" src="./images/loading_2.gif" alt="">
         </div>
-        <div v-if="!loading" class="menu_img_detail" :style="{ 'background-image': 'url('+ sj.cover +')' }"></div>
+        <div v-if="!loading" class="menu_img_detail" :style="{ 'background-image': 'url('+ cover +')' }"></div>
         <div v-if="!loading" class="p-3">
             <h4>{{ sj.name }}</h4>
             <div class="d-flex justify-content-between align-items-center">
@@ -47,8 +47,8 @@
                 </a>
             </div>
             <hr>
-            <div>
-                <img :src="sj.menu" @click="img_viewer($event.currentTarget)" width="100%" alt="">
+            <div v-for="i in menu">
+                <img :src="i" @click="img_viewer($event.currentTarget)" width="100%" alt="">
             </div>
         </div>
     </div>
@@ -63,6 +63,8 @@
         created() {
             api.get_detail(location.search.split("?id=")[1]).then(mes => {
                 this.sj = mes[0];
+                this.cover = JSON.parse(mes[0].cover)[0];
+                this.menu = JSON.parse(mes[0].menu);
                 this.loading = false;
             })
         },
