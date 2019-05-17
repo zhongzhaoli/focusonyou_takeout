@@ -41,9 +41,6 @@ body,html{
 .menu_phone{
     font-size: 14px;
 }
-.menu_phone > a:last-child{
-    margin-left: 1rem;
-}
 
 .right_div{
     width: calc(100% - 8rem - 0.5rem);

@@ -32,9 +32,8 @@
             <div class="ml-2 d-flex flex-column justify-content-between right_div">
                 <p class="title mb-0">{{ i.name }}</p>
                 <span class="start_time">外卖开始时间：{{ i.start_time }}</span>
-                <div class="menu_phone d-flex justify-content-between">
+                <div class="menu_phone">
                     <a :href="'detail.html?id=' + i.id">查看详细菜单</a>
-                    <a :href="'tel:' + i.phone">拨打电话</a>
                 </div>
             </div>
         </div>
