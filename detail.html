@@ -63,8 +63,10 @@
         created() {
             api.get_detail(location.search.split("?id=")[1]).then(mes => {
                 this.sj = mes[0];
-                this.cover = JSON.parse(mes[0].cover)[0];
-                this.menu = JSON.parse(mes[0].menu);
+                if(mes.length){
+                    this.cover = JSON.parse(mes[0].cover)[0];
+                    this.menu = JSON.parse(mes[0].menu);
+                }
                 this.loading = false;
             })
         },
