@@ -28,7 +28,7 @@
         </div>
         <div class="text-center pt-4 no_sj" v-if="sj.length == 0 && !loading">暂无数据</div>
         <div v-if="!loading" class="w-100 p-2 border-bottom-eaeaea d-flex" v-for="i in sj">
-            <div class="menu_img" :style="{ 'background-image': 'url('+ i.cover[0] +')' }"></div>
+            <div class="menu_img" :style="{ 'background-image': 'url('+ cover +')' }"></div>
             <div class="ml-2 d-flex flex-column justify-content-between right_div">
                 <p class="title mb-0">{{ i.name }}</p>
                 <span class="start_time">外卖开始时间：{{ i.start_time }}</span>
@@ -50,6 +50,7 @@
         created() {
             api.get_data().then(mes => {
                 this.sj = mes;
+                this.cover = JSON.parse(mes[0].cover)[0];
                 this.loading = false
             })
         },
